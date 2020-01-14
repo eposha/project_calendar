@@ -4,9 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = (env, argv) => {
-
     const isProduction = argv.mode === 'production';
-
     const config = {
         entry: './src/js/index.js',
         output: {
@@ -18,9 +16,8 @@ module.exports = (env, argv) => {
                     use: ['babel-loader'],
                 },
                 {
-                    test: /\.s?css$/i,
-                    use: [
-                        isProduction ?
+                    test: /.s?css$/,
+                    use: [isProduction ?
                         MiniCssExtractPlugin.loader :
                         'style-loader',
                         'css-loader',
@@ -28,7 +25,7 @@ module.exports = (env, argv) => {
                     ],
                 },
                 {
-                    test: /\.(jpg|png|gif)$/i,
+                    test: /.(jpg|png)$/,
                     use: [{
                         loader: 'url-loader',
                         options: {
@@ -48,11 +45,9 @@ module.exports = (env, argv) => {
             }),
         ],
         devServer: {
-            port: 9000,
-            hot: true,
-        },
+            hot: true
+        }
     };
-
     if (isProduction) {
         config.plugins.push(new MiniCssExtractPlugin({
             filename: '[name].css',

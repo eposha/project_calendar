@@ -1,16 +1,16 @@
 import './index.scss';
-import { renderTable, checkCurrentDay } from './days';
-import { getTimesBlocks } from './times';
-import { renderEvents } from './renderEvent';
-import { renderTimeList } from './popup';
-import { addEvent } from './addEvent';
-import { deleteEvent } from './deleteEvent';
-import { updateEvent } from './updateEvent';
-import { createEvents, getEventsList, deleteEvents } from './eventsGateaway';
+import { renderTable, checkCurrentDay } from './days.js'
+import { getTimesBlocks } from './times.js'
+import { renderEvents } from './renderEvent.js'
+import { renderTimeList } from './popup.js'
+import { addEvent } from './addEvent.js'
+import { deleteEvent } from './deleteEvent.js'
+import { updateEvent } from './updateEvent.js'
+import { createEvents, getEventsList, deleteEvents } from './eventsGateaway.js';
 
 
-window.addEventListener('storage', renderEvents);
+window.addEventListener('storage', renderEvents)
 
-renderEvents();
-setInterval(checkCurrentDay, 1000);
-renderTimeList();
+renderEvents()
+setInterval(checkCurrentDay, 1000)
+renderTimeList()
