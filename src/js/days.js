@@ -1,6 +1,4 @@
-// import './days.scss';
-// import './header.scss';
-// import './table.scss';
+// TODO: split in several files
 import { check, generateNumbersRange } from './utilities.js';
 import { renderEvents } from './renderEvent.js';
 import { moveRedline } from './redline.js';
@@ -28,10 +26,10 @@ let yearForBlockElem;
 export const setCurrentMonth = () => {
     const daysNumbElems = document.querySelectorAll('.days__numbe');
 
-    const arrWithoutFirstArg = [...daysNumbElems].splice(1);
+    const arrWithoutFirstArg = [...daysNumbElems].splice(1); // try avoid mutation methods
     let checkOneMonthOnWeek = false;
 
-    for (let arg of arrWithoutFirstArg) {
+    for (let arg of arrWithoutFirstArg) { // create more specificate names
         if (arg.textContent == 1) {
             checkOneMonthOnWeek = true
         };
@@ -112,7 +110,7 @@ export const getSectionBlock = () => {
                 result.push(
                     `
                     <div 
-                        id="${new Date(timeNow).getFullYear()+'-'}${new Date(timeNow).getMonth() + 1+'-'}${check(dayForRender++)}"
+                        id="${new Date(timeNow).getFullYear() + '-'}${new Date(timeNow).getMonth() + 1 + '-'}${check(dayForRender++)}"
                         class="table-sections__section" 
                         data-block-number='${sectionNumber + increasDataAttrib}'
                         data-date-number='${day++}'
@@ -129,7 +127,7 @@ export const getSectionBlock = () => {
                 result.push(
                     `
                 <div 
-                id="${new Date(timeNow).getFullYear()+'-'}${new Date(timeNow).getMonth() + 1+'-'}${dayForRender++}"
+                id="${new Date(timeNow).getFullYear() + '-'}${new Date(timeNow).getMonth() + 1 + '-'}${dayForRender++}"
                     class="table-sections__section" 
                     data-block-number='${sectionNumber + increasDataAttrib} '
                     data-date-number='${day++}'
@@ -156,7 +154,7 @@ export const getSectionBlock = () => {
                 result.push(
                     `
                 <div 
-                    id="${yearNum+'-'}${monthsNum+'-'}${check(daysNum++)}"
+                    id="${yearNum + '-'}${monthsNum + '-'}${check(daysNum++)}"
                     class="table-sections__section" 
                     data-block-number='${sectionNumber + increasDataAttrib + 2}'
                     data-date-number='${sectionElemFromFirstDate++}'
@@ -177,7 +175,7 @@ export const getSectionLines = () => {
     return generateNumbersRange(1, 24)
         .map(lineNumber => `
             <div 
-            id="${check(lineNumber-1)}"
+            id="${check(lineNumber - 1)}"
                 class="table-sections__line" 
                 data-line-number='${lineNumber + increasDataAttrib}'
                 data-time-set='${lineNumber}'

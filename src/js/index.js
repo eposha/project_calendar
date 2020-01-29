@@ -13,4 +13,4 @@ window.addEventListener('storage', renderEvents)
 
 renderEvents()
 setInterval(checkCurrentDay, 1000)
-renderTimeList()
+renderTimeList() //Add to another file
